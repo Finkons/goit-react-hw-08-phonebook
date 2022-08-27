@@ -1,22 +1,31 @@
-import React from 'react';
+import styles from './styles.module.css';
 import { MdOutlineFindInPage } from 'react-icons/md';
-import { Label } from './Filter.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter, getFilter } from 'redux/contactsSlice';
-
+import { setFilter, getFilter } from 'Redux/contacts/contactsSlice';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 const Filter = () => {
-  const value = useSelector(getFilter);
   const dispatch = useDispatch();
-
+  const filter = useSelector(getFilter);
   return (
-    <Label>
-      <MdOutlineFindInPage size={30} /> Find contacts by name
-      <input
-        type="text"
-        value={value}
-        onChange={e => dispatch(setFilter(e.target.value))}
-      />
-    </Label>
+    <label className={styles.label}>
+      <MdOutlineFindInPage size={30} />
+      Find contacts by name
+      <OverlayTrigger
+        placement="bottom"
+        overlay={
+          <Tooltip id="filter input tooltip">
+            Type here to find a contact
+          </Tooltip>
+        }
+      >
+        <input
+          className={styles.inputFiltr}
+          name="filter"
+          value={filter}
+          onChange={e => dispatch(setFilter(e.currentTarget.value))}
+        />
+      </OverlayTrigger>
+    </label>
   );
 };
 

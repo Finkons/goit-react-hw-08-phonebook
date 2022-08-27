@@ -1,14 +1,14 @@
 import { nanoid } from 'nanoid';
-import { Formik } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import { BiUserPlus } from 'react-icons/bi';
+import styles from './styles.module.css';
 import { BsTelephonePlusFill } from 'react-icons/bs';
 import { Report } from 'notiflix/build/notiflix-report-aio';
-import { FormBox, Button, Label, Input } from './ContactForm.styled';
 import { useState } from 'react';
 import {
   useCreateContactMutation,
   useGetContactsQuery,
-} from 'redux/contactsApi';
+} from 'Redux/contacts/contactsApi';
 
 const ContactForm = () => {
   const [createContact] = useCreateContactMutation();
@@ -59,11 +59,12 @@ const ContactForm = () => {
 
   return (
     <Formik>
-      <FormBox onSubmit={handleSubmit}>
-        <Label>
+      <Form onSubmit={handleSubmit} className={styles.formBox}>
+        <label className={styles.label}>
           <BiUserPlus size={35} />
           Name
-          <Input
+          <Field
+            className={styles.input}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -73,12 +74,13 @@ const ContactForm = () => {
             required
             id={nameId}
           />
-        </Label>
+        </label>
 
-        <Label>
+        <label className={styles.label}>
           <BsTelephonePlusFill size={25} />
           Number
-          <Input
+          <Field
+            className={styles.input}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -88,9 +90,11 @@ const ContactForm = () => {
             required
             id={numberId}
           />
-        </Label>
-        <Button type="submit">Add contact</Button>
-      </FormBox>
+        </label>
+        <button type="submit" className={styles.formButton}>
+          Add contact
+        </button>
+      </Form>
     </Formik>
   );
 };

@@ -1,0 +1,163 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  animation-name: fadeIn;
+  animation-duration: 1000ms;
+}
+
+.section {
+  width: 100%;
+  max-width: 420px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: rgba(0, 224, 224, 0.9);
+  border-radius: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}
+
+a,
+a:visited {
+  color: #fff;
+}
+
+.form > .inputWrapper > input,
+.form > .submitButton,
+.form > textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  width: 100%;
+  transform: scale(1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.submitButton:hover,
+.submitButton:focus {
+  transform: scale(1.05);
+  background-color: rgba(224, 219, 215, 0.459);
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.form > label,
+.form > .submitButton {
+  margin-top: 0.5rem;
+}
+
+.form > .submitButton {
+  padding: 0.5rem;
+}
+
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  display: inline-block;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line:hover,
+.line:focus {
+  transform: scale(1.05);
+  color: blue;
+}
+
+.showPasswordButton {
+  position: absolute;
+  border: transparent;
+  border-left: 2px solid rgba(0, 0, 0, 0.4);
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: transparent;
+  width: 44px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.showPasswordButton:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.infoIcon {
+  composes: showPasswordButton;
+  width: 44px;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+}
+
+.infoIcon:hover {
+  background-color: transparent;
+}

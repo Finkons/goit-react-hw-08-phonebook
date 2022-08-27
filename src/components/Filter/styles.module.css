@@ -1,15 +1,15 @@
-import styled from '@emotion/styled';
 
-export const Label = styled.label`
-  display: flex;
+
+.label { display: flex;
   margin: 10px;
   flex-wrap: wrap;
   width:300px;
   justify-content: center;
   align-items: center;
   color: green;
-  cursor: pointer;
-  input{
+  cursor: pointer;}
+
+  .inputFiltr{
     margin: 10px;
     height: 25px;
     width: 220px;
@@ -19,4 +19,3 @@ export const Label = styled.label`
   svg{
     padding: 3px;
   }
-`;

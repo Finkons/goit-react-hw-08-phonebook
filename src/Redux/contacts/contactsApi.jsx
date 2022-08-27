@@ -3,12 +3,21 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const contactsApi = createApi({
   reducerPath: 'contactsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://62f8db83e0564480352e3f1b.mockapi.io/contacts/',
+    baseUrl: 'https://connections-api.herokuapp.com',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+
+      return headers;
+    },
   }),
-  tagTypes: ['contact'],
+  tagTypes: ['Сontact'],
   endpoints: builder => ({
     getContacts: builder.query({
-      query: () => `/contacts/`,
+      query: () => `/contacts`,
       providesTags: ['Contact'],
     }),
     deleteContact: builder.mutation({
@@ -26,6 +35,14 @@ export const contactsApi = createApi({
       }),
       invalidatesTags: ['Contact'],
     }),
+    updateContact: builder.mutation({
+      query: ({ contactId, name, number }) => ({
+        url: `/contacts/${contactId}`,
+        method: 'PATCH',
+        body: { name, number },
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
   }),
 });
 
@@ -33,4 +50,5 @@ export const {
   useGetContactsQuery,
   useDeleteContactMutation,
   useCreateContactMutation,
+  useUpdateContactMutation,
 } = contactsApi;
