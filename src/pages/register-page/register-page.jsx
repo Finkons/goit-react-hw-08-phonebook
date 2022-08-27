@@ -212,7 +212,7 @@ const Register = () => {
                 onClick={togglePassword2}
                 type="button"
               >
-                <FaRegEye size={20} />
+                <FaRegEye size={25} />
               </button>
             </OverlayTrigger>
           </div>
@@ -275,7 +275,7 @@ const Register = () => {
                 onClick={togglePassword1}
                 type="button"
               >
-                <FaRegEye size={20} />
+                <FaRegEye size={25} />
               </button>
             </OverlayTrigger>
           </div>
