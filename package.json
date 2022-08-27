@@ -2,7 +2,7 @@
   "name": "phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://goitacademy.github.io/goit-react-hw-08-phonebook/",
+  "homepage": "https://finkons.github.io/goit-react-hw-08-phonebook/",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
@@ -62,7 +62,6 @@
   },
   "devDependencies": {
     "eslint": "^8.14.0",
-    "husky": "^7.0.4",
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2"
   },
