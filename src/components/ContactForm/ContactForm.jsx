@@ -8,7 +8,7 @@ import { useState } from 'react';
 import {
   useCreateContactMutation,
   useGetContactsQuery,
-} from 'Redux/contacts/contactsApi';
+} from 'redux/contacts/contactsApi';
 
 const ContactForm = () => {
   const [createContact] = useCreateContactMutation();

@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { GrUpdate } from 'react-icons/gr';
 import styles from './styles.module.css';
-import { useUpdateContactMutation } from 'Redux/contacts/contactsApi';
+import { useUpdateContactMutation } from 'redux/contacts/contactsApi';
 
 const UpdatePage = () => {
   const navigate = useNavigate();

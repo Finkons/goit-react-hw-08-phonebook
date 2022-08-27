@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 import { MdOutlineFindInPage } from 'react-icons/md';
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter, getFilter } from 'Redux/contacts/contactsSlice';
+import { setFilter, getFilter } from 'redux/contacts/contactsSlice';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 const Filter = () => {
   const dispatch = useDispatch();

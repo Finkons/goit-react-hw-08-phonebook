@@ -1,9 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import { useSelector } from 'react-redux';
-import authOperations from 'Redux/auth/auth-operations';
+import authOperations from 'redux/auth/auth-operations';
 import { FaUserTie } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import authSelectors from 'Redux/auth/auth-selectors';
+import authSelectors from 'redux/auth/auth-selectors';
 function Logout() {
   const user = useSelector(authSelectors.getUsername);
   const dispatch = useDispatch();

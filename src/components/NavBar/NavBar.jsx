@@ -2,7 +2,7 @@ import Logout from 'components/Logout';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import authSelectors from 'Redux/auth/auth-selectors';
+import authSelectors from 'redux/auth/auth-selectors';
 
 const NavBar = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);

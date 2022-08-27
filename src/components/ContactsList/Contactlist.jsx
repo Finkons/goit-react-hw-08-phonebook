@@ -4,13 +4,13 @@ import { FaUserAltSlash } from 'react-icons/fa';
 import { GrUpdate } from 'react-icons/gr';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import { getFilter } from 'Redux/contacts/contactsSlice';
+import { getFilter } from 'redux/contacts/contactsSlice';
 import { SpinnerCircular } from 'spinners-react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import {
   useGetContactsQuery,
   useDeleteContactMutation,
-} from 'Redux/contacts/contactsApi';
+} from 'redux/contacts/contactsApi';
 import { useEffect } from 'react';
 
 const Contacts = () => {

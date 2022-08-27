@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import styles from './styles.module.css';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import authOperations from 'Redux/auth/auth-operations';
+import authOperations from 'redux/auth/auth-operations';
 import { FaRegEye } from 'react-icons/fa';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 

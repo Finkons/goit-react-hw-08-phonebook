@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperations from 'Redux/auth/auth-operations';
+import authOperations from 'redux/auth/auth-operations';
 import styles from './styles.module.css';
 import { NavLink } from 'react-router-dom';
 import { FaCheck, FaTimes, FaInfoCircle, FaRegEye } from 'react-icons/fa';
