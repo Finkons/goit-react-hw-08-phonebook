@@ -2,5 +2,5 @@
   "compilerOptions": {
     "baseUrl": "src"
   },
-  "include": ["src", "reserv/auth"]
+  "include": ["src", "src/redux/auth/store.jsx", "reserv/auth"]
 }
