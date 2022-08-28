@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { MdError } from 'react-icons/md';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
@@ -14,64 +13,52 @@ const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios.post('/users/signup', credentials);
-    data.user &&
-      toast.success('', {
-        icon: () => <p>Welcome !!! You are successfully logged in</p>,
-      });
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    error?.response?.data?.name === 'MongoError' &&
-      toast.error('User already exists!', {
-        icon: () => (
-          <>
-            <MdError size={24} color="var(--toastify-color-error)" />
-          </>
-        ),
-      });
+const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/users/signup', credentials);
+      data.user &&
+        toast.success('', {
+          icon: () => <p>Welcome !!! You are successfully logged in</p>,
+        });
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(toast.error('Incorrect email or password', {}));
+    }
   }
-});
+);
 
-const logIn = createAsyncThunk('auth/login', async credentials => {
-  try {
-    const { data } = await axios.post('/users/login', credentials);
+const logIn = createAsyncThunk(
+  'auth/login',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/users/login', credentials);
 
-    data.user &&
-      toast.success('', {
-        icon: () => <p>Welcome !!! You are successfully logged in</p>,
-      });
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    error.response?.status === 400 &&
-      toast.error('Incorrect email or password', {
-        icon: () => (
-          <>
-            <MdError size={24} color="var(--toastify-color-error)" />
-          </>
-        ),
-      });
+      data.user &&
+        toast.success('', {
+          icon: () => <p>Welcome !!! You are successfully logged in</p>,
+        });
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(toast.error('Incorrect email or password', {}));
+    }
   }
-});
+);
 
-const logOut = createAsyncThunk('auth/logout', async () => {
-  try {
-    await axios.post('/users/logout');
-    token.unset();
-  } catch (error) {
-    error &&
-      toast.error('Sorry, an error occurred', {
-        icon: () => (
-          <>
-            <MdError size={24} color="var(--toastify-color-error)" />
-          </>
-        ),
-      });
+const logOut = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post('/users/logout');
+      token.unset();
+    } catch (error) {
+      return rejectWithValue(toast.error('Sorry, an error occurred', {}));
+    }
   }
-});
+);
 
 const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
